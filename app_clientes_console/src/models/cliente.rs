@@ -1,6 +1,7 @@
-#[allow(dead_code)]
+#[derive(Debug, Default)]
+
 pub struct Cliente {
-    pub id: u32,
+    pub id: usize,
     pub nome: String,
     pub cpf: String,
     pub endereco: String,

@@ -1,6 +1,10 @@
-use crate::tela::ler;
+use crate::models::cliente::Cliente;
+use crate::tela::ler::*;
+use crate::tela::operacoes_basica::{esperar};
+use crate::tela::servico_cliente::{incluir_cliente, excluir_cliente, listar_clientes};
 
-pub fn mostra_menu() {
+pub fn mostra_menu(clientes: &mut Vec<Cliente>) {
+    
     loop {
         println!(
             "============================Menu=============================\n\
@@ -12,11 +16,12 @@ pub fn mostra_menu() {
              ============================================================="
         );
 
-        let opcao: i32 = ler ::ler_dados_int();
+        let opcao: i32 = ler_dados_int();
+
         match opcao {
-            1 => println!("Opção 1 selecionada: Cadastrar cliente"),
-            2 => println!("Opção 2 selecionada: Excluir cliente"),
-            3 => println!("Opção 3 selecionada: Listar clientes"),
+            1 => incluir_cliente(clientes),
+            2 => excluir_cliente(clientes),
+            3 => listar_clientes(clientes),
             0 => {
                 println!("Saindo do programa...");
                 return;
@@ -24,9 +29,6 @@ pub fn mostra_menu() {
             _ => println!("Opção inválida, tente novamente."),
         }
 
-        print!("Pressione Enter para continuar...");
-        ler::ler_dados(); // Pausa para o usuário ler a mensagem antes de mostrar o menu novamente
-
-        
+        esperar(2);
     }
 }
