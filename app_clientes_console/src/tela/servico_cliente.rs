@@ -1,7 +1,7 @@
 use crate::{models::cliente::Cliente, tela::{ler::ler_dados, operacoes_basica::limpar_tela}};
 
 pub fn incluir_cliente(clientes: &mut Vec<Cliente>) {
-        limpar_tela();
+    limpar_tela();
 
     let mut cliente: Cliente = Cliente::default();
     cliente.id = clientes.len() + 1;
@@ -46,5 +46,41 @@ pub fn listar_clientes(clientes: &Vec<Cliente>) {
                 cliente.id, cliente.nome, cliente.cpf, cliente.endereco
             );
         }
+    }
+}
+
+pub fn alterar_cliente(clientes: &mut Vec<Cliente>) {
+    limpar_tela();
+
+    if clientes.is_empty() {
+        println!("Nenhum cliente cadastrado.");
+        return;
+    }
+
+    println!("Digite o ID do cliente que deseja alterar:");
+    let id: usize = ler_dados().parse().unwrap_or(0);
+
+    if let Some(cliente) = clientes.iter_mut().find(|c| c.id == id) {
+        println!("Digite o novo nome (ou pressione Enter para manter):");
+        let nome = ler_dados();
+        if !nome.is_empty() {
+            cliente.nome = nome;
+        }
+
+        println!("Digite o novo CPF (ou pressione Enter para manter):");
+        let cpf = ler_dados();
+        if !cpf.is_empty() {
+            cliente.cpf = cpf;
+        }
+
+        println!("Digite o novo endereço (ou pressione Enter para manter):");
+        let endereco = ler_dados();
+        if !endereco.is_empty() {
+            cliente.endereco = endereco;
+        }
+
+        println!("Cliente atualizado com sucesso!");
+    } else {
+        println!("Cliente não encontrado.");
     }
 }

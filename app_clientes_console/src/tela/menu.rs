@@ -1,17 +1,17 @@
 use crate::models::cliente::Cliente;
 use crate::tela::ler::*;
-use crate::tela::operacoes_basica::{esperar};
-use crate::tela::servico_cliente::{incluir_cliente, excluir_cliente, listar_clientes};
+use crate::tela::operacoes_basica::esperar;
+use crate::tela::servico_cliente::{incluir_cliente, excluir_cliente, listar_clientes, alterar_cliente};
 
 pub fn mostra_menu(clientes: &mut Vec<Cliente>) {
-    
     loop {
         println!(
             "============================Menu=============================\n\
              Escolha uma opção:\n\n\
              1. Cadastrar cliente\n\
-             2. Excluir cliente\n\
-             3. Listar clientes\n\
+             2. Listar clientes\n\
+             3. Alterar cliente\n\
+             4. Excluir cliente\n\
              0. Sair\n\
              ============================================================="
         );
@@ -20,8 +20,11 @@ pub fn mostra_menu(clientes: &mut Vec<Cliente>) {
 
         match opcao {
             1 => incluir_cliente(clientes),
-            2 => excluir_cliente(clientes),
-            3 => listar_clientes(clientes),
+            2 => listar_clientes(clientes),
+            3 => alterar_cliente(clientes),
+            4 => excluir_cliente(clientes),
+           
+            
             0 => {
                 println!("Saindo do programa...");
                 return;
