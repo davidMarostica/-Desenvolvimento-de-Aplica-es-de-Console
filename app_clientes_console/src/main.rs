@@ -1,3 +1,8 @@
+mod tela;
+
+use tela::menu as menu;
+
 fn main() {
-    println!("Hello, world!");
+    menu::mostra_menu();
 }
+
