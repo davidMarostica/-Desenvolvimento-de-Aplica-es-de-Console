@@ -1,0 +1,18 @@
+# Ignorar diretório de build
+/target/
+
+# Arquivos de backup do Rust
+**/*.rs.bk
+
+# Arquivos de lock (opcional em bibliotecas, mas geralmente mantido em apps)
+Cargo.lock
+
+# Configurações locais de IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Arquivos temporários
+*.log
+*.tmp
