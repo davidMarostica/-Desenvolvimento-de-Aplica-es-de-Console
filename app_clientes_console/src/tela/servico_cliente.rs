@@ -20,6 +20,8 @@ pub fn incluir_cliente(clientes: &mut Vec<Cliente>) {
 }
 
 pub fn excluir_cliente(clientes: &mut Vec<Cliente>) {
+    limpar_tela();
+
     println!("Digite o ID do cliente a excluir:");
     let id: usize = ler_dados().parse().unwrap_or(0);
 
@@ -32,6 +34,7 @@ pub fn excluir_cliente(clientes: &mut Vec<Cliente>) {
 }
 
 pub fn listar_clientes(clientes: &Vec<Cliente>) {
+    limpar_tela();
 
     if clientes.is_empty() {
         println!("Nenhum cliente cadastrado.");
